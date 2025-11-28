@@ -1,0 +1,62 @@
+:root {
+    --bg: #0b1a3b;
+    --muted: #97a6b8;
+    --primary: #3b82f6;
+    --success: #16a34a;
+    --danger: #ef4444;
+    --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    --radius: 12px;
+    font-family: Inter, sans-serif;
+}
+
+html, body { height: 100%; margin: 0; background: var(--bg); color: #e6eef6; }
+* { box-sizing: border-box; }
+
+.topbar { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.topbar-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 16px;}
+.topbar h1 { margin:0; font-weight:700; color: var(--primary); }
+.controls { display:flex; gap:10px; align-items:center; }
+input[type="search"] { padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); background: rgba(255,255,255,0.02); color:inherit; outline:none; transition: 0.2s; }
+input[type="search"]:focus { box-shadow:0 6px 20px rgba(59,130,246,0.08); }
+
+.btn { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:none; background:transparent; color:inherit; cursor:pointer; transition: transform .12s, box-shadow .12s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.btn.primary { background: linear-gradient(90deg, var(--primary), #60a5fa); color:#fff; }
+.btn.danger { background: linear-gradient(90deg, var(--danger), #fb7185); color:#fff; }
+
+.container { max-width:1100px; margin:26px auto; padding:0 16px; }
+.card { background: var(--card-bg); border-radius: var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03); box-shadow: 0 6px 24px rgba(2,6,23,0.6);}
+.card-head { display:flex; justify-content:space-between; align-items:center; }
+.muted { color: var(--muted); }
+
+.table-wrap { margin-top:12px; overflow:auto; }
+.nice-table { width:100%; border-collapse: collapse; min-width: 680px;}
+.nice-table th, .nice-table td { padding:12px 14px; border-bottom:1px dashed rgba(255,255,255,0.03);}
+.nice-table th { text-align:left; font-weight:600; color:var(--muted); font-size:14px;}
+.row-click { cursor:default; transition: background 0.12s;}
+.row-click:hover { background: linear-gradient(90deg, rgba(59,130,246,0.04), transparent); }
+.tag { display:inline-block; padding:4px 8px; border-radius:999px; background: rgba(255,255,255,0.03); font-size:12px; margin-right:6px; color:var(--muted);}
+
+/* modals */
+.modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,0.7); z-index:60; padding:20px; }
+.modal.show { display:flex; animation: fadeIn .2s ease forwards; }
+@keyframes fadeIn { from {opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+.modal-panel { width:100%; max-width:720px; background:#081025; padding:18px; border-radius: var(--radius); border:1px solid rgba(255,255,255,0.04); position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.6);}
+.modal-close { position:absolute; right:12px; top:12px; background:transparent; border:none; font-size:16px; cursor:pointer; color:var(--muted); }
+
+/* form grid */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.form-grid .stretch { grid-column:1/-1; }
+.form-grid .inline { display:flex; align-items:center; gap:8px; }
+.form-actions { grid-column:1/-1; display:flex; justify-content:flex-end; gap:8px; padding-top:6px; }
+
+/* toasts */
+.toasts { position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:8px; z-index:200; }
+.toast { min-width:200px; padding:10px 14px; border-radius:8px; color:#fff; font-weight:600; opacity:0; transform:translateY(12px); transition: all .28s;}
+.toast.show { opacity:1; transform:translateY(0);}
+.toast.success { background:linear-gradient(90deg, var(--success), #4ade80);}
+.toast.error { background:linear-gradient(90deg, var(--danger), #fb7185);}
+.toast.info { background:linear-gradient(90deg, var(--primary), #60a5fa); }
+
+/* responsive */
+@media(max-width:720px){.form-grid{grid-template-columns:1fr;} input[type="search"]{min-width:120px;} .nice-table{min-width:100%;}}

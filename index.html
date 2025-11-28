@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Produist — CRUD Produits</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/frontend/public/style.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <h1>Produist</h1>
+            <div class="controls">
+                <input id="search" type="search" placeholder="Rechercher un produit..." aria-label="Recherche produits">
+                <button id="btn-add" class="btn primary"><i class="fa fa-plus"></i> Ajouter</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="card-head">
+                <h2>Catalogue</h2>
+                <small id="count" class="muted"></small>
+            </div>
+
+            <div class="table-wrap">
+                <table id="produits-table" class="nice-table" aria-live="polite">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Disponible</th>
+                            <th style="width:150px">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="detail-modal" class="modal" aria-hidden="true">
+        <div class="modal-panel">
+            <button class="modal-close" data-close><i class="fa fa-times"></i></button>
+            <div id="detail-content"></div>
+            <div class="modal-actions">
+                <button id="detail-edit" class="btn"><i class="fa fa-edit"></i> Modifier</button>
+                <button id="detail-delete" class="btn danger"><i class="fa fa-trash"></i> Supprimer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-modal" class="modal" aria-hidden="true">
+        <div class="modal-panel">
+            <button class="modal-close" data-close><i class="fa fa-times"></i></button>
+            <h3 id="form-title">Créer un produit</h3>
+            <form id="produit-form" class="form-grid">
+                <input type="hidden" id="produit-id">
+                <label>Nom <input id="nom" required></label>
+                <label>Description <input id="description"></label>
+                <label>Prix (€) <input id="prix" type="number" min="0" step="0.01" value="0"></label>
+                <label>Quantité <input id="stock" type="number" min="0" value="0"></label>
+                <label class="stretch">Catégories <input id="categories" placeholder="séparées par ,"></label>
+                <label class="inline">Disponible <input id="est_disponible" type="checkbox" checked></label>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Enregistrer</button>
+                    <button type="button" id="btn-cancel" class="btn">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toasts" class="toasts"></div>
+
+    <script src="/frontend/public/app.js"></script>
+</body>
+</html>
